@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Calculator</title>
+     
+</head>
+<style>
+  *{
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+}
+.outer h1{
+      text-align: center;
+      font-size: 40px;
+      font-family:Georgia, Times, 'Times New Roman', serif;
+      padding: 10px 0px;
+      border-bottom: 1px solid rgb(0, 0, 0);
+}
+form{
+      display: grid;
+      grid-template-columns: 235px 235px 235px;
+      grid-template-rows: 50px 50px 50px 50px 50px 50px 50px 50px;
+      padding: 50px;
+      gap: 10px;
+      justify-content: center;
+}
+input{
+      padding: 10px;
+      background-color:cornsilk;
+      border: 2px solid black;
+      border-radius: 15px;
+      font-size: 20px;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+button{
+      text-align: center;
+      background-color:gainsboro;
+      font-size: 20px;
+      border-radius: 15px;
+      font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      transition: ease-in-out 0.3s;
+}
+button:hover{
+      background-color: black;
+      color: rgb(255, 255, 255);
+}
+#n4{
+      grid-column: 1/3;
+}
+#n1{
+      grid-column: 1/3;
+}
+#n2{
+      grid-column: 1/3;
+}
+#n3{
+      grid-column: 3/4;
+      grid-row: 1/4;
+      
+}
+</style>
+<body>
+      <div class="outer">
+            <h1>Scientific Calculator</h1>
+            <form> 
+                  <input type="text" id="n1" placeholder="number1">
+                  <input type="text" id="n2" placeholder="number2">
+                  <input type="text" id="n3" placeholder="Result" disabled>
+                  <button type="reset" id="n4">Reset</button> 
+                  <button type="button" onclick="add()">Add</button>
+                  <button type="button" onclick="subtract()">Subtract</button>
+                  <button type="button" onclick="multiply()">Multiply</button>
+                  <button type="button" onclick="divide()">Divide</button>
+                  <button type="button" onclick="modulus()">Modulus</button>
+                  <!-- <button type="button" onclick="cos()">Cos</button>
+                  <button type="button" onclick="sin()">Sin</button>
+                  <button type="button" onclick="tan()">Tan</button>
+                  <button type="button" onclick="underRoot()">√</button>
+                  <button type="button" onclick="square()">x²</button>
+                  <button type="button" onclick="power()">x^y</button>
+                  <button type="button" onclick="log()">Log</button>
+                  <button type="button" onclick="Pi()">Pi</button>
+                  <button type="button" onclick="min()">Min</button>
+                  <button type="button" onclick="max()">Max</button> -->
+            </form>
+      </div>
+
+      <script>
+        function add() {
+                  var a = Number(parseFloat(document.getElementById('n1').value));
+                  var b = Number(parseFloat(document.getElementById('n2').value));
+                  document.getElementById('n3').value = a + b;
+        }
+      
+        function subtract() {
+          var a = parseFloat(document.getElementById('n1').value);
+          var b = parseFloat(document.getElementById('n2').value);
+          document.getElementById('n3').value = a - b;
+        }
+      
+        function multiply() {
+          var a = parseFloat(document.getElementById('n1').value);
+          var b = parseFloat(document.getElementById('n2').value);
+          document.getElementById('n3').value = a * b;
+        }
+      
+        function divide() {
+          var a = parseFloat(document.getElementById('n1').value);
+          var b = parseFloat(document.getElementById('n2').value);
+          if (b === 0) {
+            document.getElementById('n3').value = "Error: Cannot divide by zero";
+          } else {
+            document.getElementById('n3').value = a / b;
+          }
+        }
+      
+        function modulus() {
+          var a = parseFloat(document.getElementById('n1').value);
+          var b = parseFloat(document.getElementById('n2').value);
+          document.getElementById('n3').value = a % b;
+        }
+      
+        function cos() {
+          var a = parseFloat(document.getElementById('n1').value);
+          var b = parseFloat(document.getElementById('n2').value);
+          document.getElementById('n3').value ="num1-cos: " +  Math.cos(a);
+        }
+      
+        function sin() {
+          var a = parseFloat(document.getElementById('n1').value);
+          document.getElementById('n3').value ="num1-sin: " +  Math.sin(a);
+        }
+      
+        function tan() {
+          var a = parseFloat(document.getElementById('n1').value);
+          document.getElementById('n3').value ="num1-Tan: " +  Math.tan(a);
+        }
+      
+        function underRoot() { 
+          var a = parseFloat(document.getElementById('n1').value);
+          document.getElementById('n3').value ="num1-underRoot: " +  Math.sqrt(a);
+        }
+      
+        function square() {
+          var a = parseFloat(document.getElementById('n1').value);
+          document.getElementById('n3').value = "num1-square: " + a * a;
+        }
+      
+        function power() {
+          var a = parseFloat(document.getElementById('n1').value);
+          var b = parseFloat(document.getElementById('n2').value);
+          document.getElementById('n3').value = Math.pow(a, b);
+        }
+      
+        function log() {
+          var a = parseFloat(document.getElementById('n1').value);
+          document.getElementById('n3').value = "num1-log: " + Math.log(a);
+        }
+        function Pi() {
+          document.getElementById('n3').value =Math.PI;
+        }
+        function min() {
+          var a = parseFloat(document.getElementById('n1').value);
+          var b = parseFloat(document.getElementById('n2').value);
+          document.getElementById('n3').value = "min: " + Math.min(a,b);
+        }
+        function max() {
+          var a = parseFloat(document.getElementById('n1').value);
+          var b = parseFloat(document.getElementById('n2').value);
+          document.getElementById('n3').value = "max: " + Math.max(a,b);
+        }
+      </script>
+</body>
+</html>
